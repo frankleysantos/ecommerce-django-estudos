@@ -6,7 +6,7 @@ from django.db import models
 from categoria.models import Categoria
 
 def upload_image_book(instace, filename):
-    return f"{instace.id}-{filename}"
+    return f"{instace.nome}-{filename}"
 
 
 # Create your models here.

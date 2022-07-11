@@ -38,7 +38,6 @@ class ProdutoViewSet(viewsets.ViewSet):
 
         @action(detail=False, methods=['post'])
         def inserir(self, request, pk=None):
-                print(request.FILES['imagem_principal'])
                 queryset =''
                 if request.POST:
                         nome = request.POST.get('nome')
@@ -57,6 +56,7 @@ class ProdutoViewSet(viewsets.ViewSet):
                         )
                         produto.save()
                         form = request.FILES
+                        print(form)
                         if form:
                                 fotos = request.FILES.getlist('fotos') #pegar multiplos arquivos
                                 for foto in fotos:

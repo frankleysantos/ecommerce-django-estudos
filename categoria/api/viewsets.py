@@ -29,3 +29,12 @@ class CategoriaViewSet(viewsets.ViewSet):
             {'id': categoria.id, 'nome': request.POST.get('nome'), 'criado_em': categoria.criado_em}
         ]
         return Response(categoriaSalva)
+
+    @action(detail=False, methods=['post'])
+    def delete(self, request):
+        categoria = models.Categoria.objects.get(id=request.POST.get('id'))
+        categoria.delete()
+        resp = [{'msn': 'Produto deletado com sucesso', 'id': request.POST.get('id')}]
+        return Response(resp)
+
+
