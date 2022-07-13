@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings #para trabalhar com upload de imagens
 from django.conf.urls.static import static #para trabalhar com upload de imagens
-from rest_framework_simplejwt.views import (TokenObtainPairView, TokenRefreshView) # acessar token jwt
+from rest_framework_simplejwt.views import (TokenObtainPairView, TokenRefreshView, TokenVerifyView) # acessar token jwt
 
 urlpatterns = [
     path('categoria/', include('categoria.urls')),
@@ -27,5 +27,6 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('token/', TokenObtainPairView.as_view()), # para obter o token jwt
     path('token/refresh', TokenRefreshView.as_view()),
+    path('token/user', TokenVerifyView.as_view()),
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # adicionar para upload e visulização de imagens
